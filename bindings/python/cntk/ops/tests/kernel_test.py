@@ -786,7 +786,7 @@ def test_conv_free_static_axes(warmup_input_size, free_dimension_increment, filt
                 name='a_test')
 
     from cntk import convolution
-    
+
     conv_op_without_free_dim = convolution(conv_map, a_ref, auto_padding=[False] + [True]*len(filter_size))
     conv_op_with_free_dim = convolution(conv_map, a_test, auto_padding=[False] + [True]*len(filter_size))
 
