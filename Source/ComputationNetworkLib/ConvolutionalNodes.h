@@ -955,7 +955,8 @@ public:
         InferReductionDims(inputShape, TensorShape());
 
         auto outDims = ConvolveGeometry::ComputeOutputShape(inputShape, m_kernelShape, m_mapCount, m_stride,
-                                                            m_sharing, m_autoPad, m_lowerPad, m_upperPad, TensorShape(1), m_ceilOutDim);
+                                                            m_sharing, m_autoPad, m_lowerPad, m_upperPad, TensorShape(1), m_ceilOutDim,
+                                                            NeedsDynamicValidation(), isFinalValidationPass);
         SetDims(outDims, HasMBLayout());
         if (isFinalValidationPass)
         {
@@ -1079,7 +1080,8 @@ public:
         // and node output (outDims) is pooling input.
         auto outputShape = GetInputSampleLayout(1);
         auto inferredShape = ConvolveGeometry::ComputeOutputShape(outputShape, m_kernelShape, m_mapCount, m_stride,
-                                                               m_sharing, m_autoPad, m_lowerPad, m_upperPad);
+                                                               m_sharing, m_autoPad, m_lowerPad, m_upperPad, TensorShape(1), false,
+                                                               NeedsDynamicValidation(), isFinalValidationPass);
         if (inputShape != inferredShape)
             InvalidArgument("%ls %ls the shape of the unpooling operand %ls is different from "
                             "the result of pooling the poolingInput argument using"
