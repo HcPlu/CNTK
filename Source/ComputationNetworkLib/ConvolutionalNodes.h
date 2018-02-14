@@ -287,7 +287,7 @@ protected:                                  \
     using Base::m_transpose;                \
     using Base::m_outputShape;              \
     using Base::m_ceilOutDim;               \
-    using Base::m_poolIncludePad;              \
+    using Base::m_poolIncludePad;           \
     using Base::m_imageLayout;              \
     using Base::m_maxTempMemSizeInSamples;  \
     using Base::m_tempMatrixForward;        \
@@ -295,6 +295,7 @@ protected:                                  \
     using Base::m_convEng;                  \
     using Base::InferConvolution2DReductionDims; \
     using Base::InferReductionDims;         \
+    using Base::NeedsDynamicValidation;     \
 public:
 
 // -----------------------------------------------------------------------
